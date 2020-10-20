@@ -53,40 +53,40 @@ app.use(
 );
 
 //#AUTH ENDPOINTS
-app.get("/auth/user");
-app.post("/auth/register");
-app.post("/auth/login");
-app.delete("/auth/logout");
-app.put("/auth/user/:id");
+app.get("/auth/user", authCtrl.getUser);
+app.post("/auth/register", authCtrl.register);
+app.post("/auth/login", authCtrl.login);
+app.delete("/auth/logout", authCtrl.logout);
+app.put("/auth/user/:id", authCtrl.edit);
 
 //#ORDER ENDPOINTS
-app.get("/api/order/:id");
-app.get("/api/orders/:id");
-app.post("/api/order");
-app.delete("/api/order");
+app.get("/api/order/:id", orderCtrl.getOrder);
+app.get("/api/orders/:id", orderCtrl.getOrders);
+app.post("/api/order", orderCtrl.addOrder);
+app.post("/api/order/:id", orderCtrl.cancelOrder);
 
 //#REVIEW ENDPOINTS
-app.get("/api/reviews/:id");
-app.post("/api/review");
-app.get("/api/recent");
-app.get("/api/ratings/:id");
+app.get("/api/reviews/:id", reviewCtrl.getAllReviews);
+app.post("/api/review", reviewCtrl.addReview);
+app.get("/api/recent", reviewCtrl.getRecentReviews);
+app.get("/api/ratings/:id", reviewCtrl.getAvgRating);
 
 //#PRODUCT ENDPOINTS
-app.get("/api/products");
-app.get("/api/product");
-app.post("/api/product");
-app.put("/api/product/:id");
-app.delete("/api/product");
-app.get("/api/products");
+app.get("/api/products", productCtrl.getProducts);
+app.get("/api/product/:id", productCtrl.getProduct);
+app.post("/api/product", productCtrl.addProduct);
+app.put("/api/product/:id", productCtrl.editProduct);
+app.delete("/api/product", productCtrl.deleteProducts);
+app.get("/api/productscat", productCtrl.getProductsCat);
 
 //#CART ENDPOINTS
-app.get("/api/cart/:id");
-app.post("/api/cart/:id");
-app.put("/api/cart/:id");
-app.delete("/api/cart");
+app.get("/api/cart/:id", cartCtrl.getCart);
+app.post("/api/cart", cartCtrl.addCart);
+app.put("/api/cart/:id", cartCtrl.editCart);
+app.delete("/api/cart/:id", cartCtrl.deleteCart);
 
 //#CATEGORY ENDPOINTS
-app.get("/api/categories");
+app.get("/api/categories", categoryCtrl.getCats);
 
 //#AWS S3 ENDPOINTS
 app.get("/api/signs3", S3Ctrl.sign_s3);

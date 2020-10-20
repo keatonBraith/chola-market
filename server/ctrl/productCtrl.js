@@ -20,7 +20,7 @@ module.exports = {
     if (product) {
       res.status(200).send(product);
     } else {
-      res.status(500).send("Oops");
+      res.status(500).send("Oops, Something Went Wrong");
     }
   },
 
@@ -63,5 +63,33 @@ module.exports = {
       product_id: id,
     });
     res.status(200).send(product);
+  },
+
+  getProductsCat: async (req, res) => {
+    const db = req.app.get("db");
+    const { id } = req.body;
+    const [products] = await db.products.get_pcategory(id);
+    if (products) {
+      res.status(200).send(products);
+    } else {
+      res.status(209).send("Error");
+    }
+  },
+
+  deleteProducts: async (req, res) => {
+    const db = req.app.get("db");
+    const { id } = req.params;
+    db.products
+      .delete_product(id)
+      .then((products) => {
+        console.log(products, id);
+        res.status(200).send(products);
+      })
+      .catch((err) => {
+        res.status(500).send({
+          errorMessage: "Oops Something Went Wrong!",
+        });
+        console.log(err);
+      });
   },
 };

@@ -5,6 +5,7 @@ import Login from "./components/login/Login";
 import Profile from "./components/profile/Profile";
 import Search from "./components/search/Search";
 import About from "./components/about/About";
+import Product from "./components/product/Product";
 
 export default (
   <Switch>
@@ -13,5 +14,6 @@ export default (
     <Route path="/profile" component={Profile} />
     <Route path="/search" component={Search} />
     <Route path="/about" component={About} />
+    <Route path="/product" component={Product} />
   </Switch>
 );

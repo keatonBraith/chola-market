@@ -1,4 +1,4 @@
-UPDATE reviews
+UPDATE ratings
 SET 
 title = ${title},
 rating = ${rating},

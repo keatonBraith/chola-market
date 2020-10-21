@@ -26,11 +26,12 @@ module.exports = {
     res.status(500).send(update);
   },
 
-  getAllReviews: (req, res) => {
+  getAllReviews: async (req, res) => {
     const db = req.app.get("db");
     const { id } = req.params;
-    const reviews = db.reviews.get_reviews(id);
+    const reviews = await db.reviews.get_reviews(id);
     res.status(200).send(reviews);
+    console.log(reviews);
   },
 
   getRecentReviews: async (req, res) => {

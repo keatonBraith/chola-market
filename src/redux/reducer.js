@@ -14,6 +14,7 @@ const initialState = {
   reviews: [],
   cart: [],
   order: [],
+  orders: [],
 };
 
 //PRODUCT
@@ -27,6 +28,7 @@ const POST_REVIEW = "POST_REVIEW";
 //CART & ORDER
 const GET_CART = "GET_CART";
 const GET_ORDER = "GET_ORDER";
+const GET_ORDERS = "GET_ORDERS";
 
 //AUTH
 const LOGIN_USER = "LOGIN_USER";
@@ -65,14 +67,6 @@ export function getProducts() {
   };
 }
 
-export function addProduct() {
-  const product = axios.post("/api/product").then((res) => res.product);
-  return {
-    type: ADD_PRODUCT,
-    payload: product,
-  };
-}
-
 //REVIEW FUNCTIONS
 export function getReviews() {
   const reviews = axios.get("/api/reviews/:id").then((res) => res.reviews);
@@ -107,6 +101,14 @@ export function getOrder() {
   };
 }
 
+export function getOrders() {
+  const orders = axios.get("/api/orders").then((res) => res.orders);
+  return {
+    type: GET_ORDERS,
+    payload: orders,
+  };
+}
+
 export default function reducer(state = initialState, action) {
   const { type, payload } = action;
   switch (type) {
@@ -126,6 +128,8 @@ export default function reducer(state = initialState, action) {
       return { ...state, cart: payload };
     case GET_ORDER + "_FULFILLED":
       return { ...state, order: payload };
+    case GET_ORDERS + "_FULFILLED":
+      return { ...state, orders: payload };
     case LOGIN_USER:
       return { ...state, user: payload, isLoggedIn: true };
     case LOGOUT:

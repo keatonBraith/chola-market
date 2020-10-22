@@ -17,6 +17,12 @@ module.exports = {
     res.status(200).send(orders);
   },
 
+  getAllOrders: async (req, res) => {
+    db = req.app.get("db");
+    const orders = await db.orders.get_all_orders();
+    res.status(200).send(orders);
+  },
+
   cancelOrder: async (req, res) => {
     db = req.app.get("db");
     const { id } = req.params;

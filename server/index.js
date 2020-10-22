@@ -62,6 +62,7 @@ app.put("/auth/user/:id", authCtrl.edit);
 //#ORDER ENDPOINTS
 app.get("/api/order/:id", orderCtrl.getOrder);
 app.get("/api/orders/:id", orderCtrl.getOrders);
+app.get("/api/orders", orderCtrl.getAllOrders);
 app.post("/api/order", orderCtrl.addOrder);
 app.post("/api/order/:id", orderCtrl.cancelOrder);
 

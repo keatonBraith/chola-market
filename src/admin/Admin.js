@@ -10,6 +10,10 @@ const Admin = (props) => {
     return(
         <div>
             <div>
+                <h1>Welcome Chola Market Admin!</h1>
+                <p>Please be sure to check that all information is correct before editing, adding, or deleting products! Once changes are submitted they will go live on the site. Thank you!</p>
+            </div>
+            <div>
                 <h1>Add A Product</h1>
                 <div>
                     <input placeholder="title"/>
